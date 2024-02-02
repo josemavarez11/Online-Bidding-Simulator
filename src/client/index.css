@@ -1,0 +1,112 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: optimal, sans-serif;
+  color: white;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #0b0b0b;
+
+}
+.content-stats{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 25px;
+  border-radius: 5px;
+  background-color: #262626;
+  height: 400px;
+
+}
+.subContainer{
+  background-color: #3f3f3f;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 25px;
+}
+button{
+  background-color: rgb(109, 109, 109);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.file-select {
+  position: relative;
+  display: inline-block;
+}
+
+.file-select::before {
+  background-color: rgb(109, 109, 109);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  padding: 10px;
+  font-size: 20px;
+  font-style: italic;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 200px;
+  height: 32px;
+  display: inline-block;
+}
+
+#src-file1::before {
+  content: 'Seleccionar Archivo 1';
+}
+
+#src-file2::before {
+  content: 'Seleccionar Archivo 2';
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333; /* Cambia #333 al color que desees para el fondo del footer */
+  color: white; /* Cambia "white" al color que desees para el texto */
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-style: italic;
+}
+.content-footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  
+}
+.title{
+  font-size: 30px;
+  font-style: italic;
+}

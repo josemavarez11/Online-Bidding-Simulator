@@ -1,3 +1,5 @@
+import { encryptPayload } from './utils/encryptPayload.js';
+
 const sendBiddingEndpoint = 'https://localhost:4433/api/sendBiddings';
 const biddingInput = document.getElementById('bidding-input');
 const sendBiddingButton = document.getElementById('sendbidding-button');
@@ -23,5 +25,4 @@ sendBiddingButton.addEventListener('click', async () => {
     } catch (error) {
         alert('Error uploading files');
     }
-    
-})
+});
