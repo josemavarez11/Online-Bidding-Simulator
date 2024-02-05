@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Bidding</title>
-    <link rel="icon" type="image/x-icon" href="./icon.png">
-    <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-
-    <div class="container">
-        <div class="content-stats">
-        <h1 class="title">Welcome to Online Bidding</h1>
-        <div class="file-select">
-            <input type="file" id="bidding-input" multiple>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Bidding</title>
+        <link rel="icon" type="image/x-icon" href="./icon.png">
+        <link rel="stylesheet" href="./index.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content-stats">
+                <h1 class="title">Welcome to Online Bidding</h1>
+                <div class="file-select">
+                    <input type="file" id="bidding-input" multiple>
+                </div>
+                
+                <div class="subContainer">
+                    <button id="sendbidding-button">Send Biddings</button>
+                    <button id="resetfiles-button">Reset Files</button>
+                </div>
+            </div>
+            <h4 id="h4">No files selected</h4>
         </div>
-        
-        <div class="subContainer">
-            <button id="sendbidding-button">Send Biddings</button>
-            <button id="resetfiles-button">Reset Files</button>
-        </div>
-    </div>
-</div>
 
-<footer>
-    <p>Realizado por:</p>
-    <div class="content-footer">
-        <article>
-            <p>Misael Reverol</p>
-            <p>Ci: 30.230.507</p>
-        </article>
-        
-        <article>
-            <p>Jose Mavarez</p>
-            <p>Ci: 29.932.288</p>
-        </article>
-
-        <article>
-            <p>Eduardo Garcia</p>
-            <p>Ci: 30.167.871</p>
-        </article>
-    </div>
-  </footer>
-    
-<script src="./script.js" type="module"></script>
-</body>
+        <footer>
+            <p>Realizado por:</p>
+            <div class="content-footer">
+                <article>
+                    <p>Misael Reverol</p>
+                    <p>Ci: 30.230.507</p>
+                </article>
+                <article>
+                    <p>Jose Mavarez</p>
+                    <p>Ci: 29.932.288</p>
+                </article>
+                <article>
+                    <p>Eduardo Garcia</p>
+                    <p>Ci: 30.167.871</p>
+                </article>
+            </div>
+        </footer>
+        <script src="./script.js" type="module"></script>
+    </body>
 </html>
