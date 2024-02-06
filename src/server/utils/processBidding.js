@@ -45,6 +45,7 @@ const processBidding = () => {
       const filePath = path.join('./files', file);
       fs.unlinkSync(filePath);
     });
+    
     return result;
 }
 

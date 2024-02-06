@@ -8,8 +8,8 @@ import processBidding from "../utils/processBidding.js";
  */
 const sendBiddingHandler = (req, res) => {
     console.log(LOG_STYLES.FILE_RECEIVED(`File received at ${new Date().toLocaleString()}`));
-    processBidding();
-    res.status(204).end();
+    const result = processBidding();
+    res.status(200).json({ message: result });
 }
 
 export default sendBiddingHandler;
