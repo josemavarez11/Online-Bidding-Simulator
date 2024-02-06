@@ -1,7 +1,7 @@
 Swal.fire({
     title: 'Welcome to Online Bidding',
     text: 'Please select the encrypted files you want to send. They will be decrypted and analyzed to get the winner of the bidding process.',
-    icon: 'info',
+    icon: 'success',
     confirmButtonText: 'Ok'
 });
 
@@ -24,6 +24,8 @@ sendBiddingButton.addEventListener('click', async () => {
         });
         return;
     }
+
+    console.log(files);
 
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {

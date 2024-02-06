@@ -23,8 +23,15 @@ const getExcelData = (inputPath, privateKey, outputPath) => {
     const data = xlsx.utils.sheet_to_json(newSheet);
     const filename = path.basename(inputPath, '.xlsx');
     outputPath = path.join(outputPath, `${filename}.xlsx`);
-    xlsx.writeFile(decryptedSheet, outputPath);
+    try {
+
+        xlsx.writeFile(decryptedSheet, outputPath);
+        
+    } catch (error) {
+        error.message = `Error writing the file: ${error}`;
+    }
     const stringData = JSON.stringify(data);
+
     return stringData;
 }
 
