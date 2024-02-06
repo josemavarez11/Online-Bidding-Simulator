@@ -24,9 +24,7 @@ const getExcelData = (inputPath, privateKey, outputPath) => {
     const filename = path.basename(inputPath, '.xlsx');
     outputPath = path.join(outputPath, `${filename}.xlsx`);
     try {
-
-        xlsx.writeFile(decryptedSheet, outputPath);
-        
+        xlsx.writeFile(decryptedSheet, outputPath);   
     } catch (error) {
         error.message = `Error writing the file: ${error}`;
     }

@@ -16,8 +16,8 @@ const desktopPath = path.join(os.homedir(), 'Desktop');
  */
 const processBidding = () => {
   const encryptedFiles = fs.readdirSync('./files');
-  let precioMasBajo = Infinity;
-  let archivoPrecioMasBajo = '';
+  let lowerPrice = Infinity;
+  let lowerPriceFile = '';
 
   encryptedFiles.forEach((encryptedFile) => {
     const encryptedFilePath = path.resolve('./files', encryptedFile);
@@ -25,12 +25,12 @@ const processBidding = () => {
     try {
       const excelData = getExcelData(encryptedFilePath, privateKey, desktopPath);
       const parsedData = JSON.parse(excelData);
-      const precio = parsedData[0].precio;
-      const nombre = parsedData[0].empresa;
+      const price = parsedData[0].precio;
+      const name = parsedData[0].empresa;
 
-      if (typeof precio === 'number' && precio < precioMasBajo) {
-        precioMasBajo = precio;
-        archivoPrecioMasBajo = nombre;
+      if (typeof price === 'number' && price < lowerPrice) {
+        lowerPrice = price;
+        lowerPriceFile = name;
       }
 
       console.log(LOG_STYLES.DECRYPT_END('FILE DECRYPTED WITH THIS DATA:', excelData));
@@ -38,15 +38,12 @@ const processBidding = () => {
       console.error(LOG_STYLES.DECRYPT_ERROR('Error decrypting file', error));
     }
   });
-
-  const result = `The winner is ${archivoPrecioMasBajo} with a bid of ${precioMasBajo}`;
-  console.log(result)
+  const result = `The winner is ${lowerPriceFile} with a bid of ${lowerPrice}`;
   fs.readdirSync('./files').forEach((file) => {
-      const filePath = path.join('./files', file);
-      fs.unlinkSync(filePath);
-    });
-    
-    return result;
+    const filePath = path.join('./files', file);
+    fs.unlinkSync(filePath);
+  });
+  return result;
 }
 
 export default processBidding;
