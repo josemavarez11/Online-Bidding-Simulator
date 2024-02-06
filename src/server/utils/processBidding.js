@@ -39,7 +39,7 @@ const processBidding = () => {
     }
   });
 
-  const result = `La empresa ganadora es ${archivoPrecioMasBajo} con un precio de ${precioMasBajo}`;
+  const result = `The winner is ${archivoPrecioMasBajo} with a bid of ${precioMasBajo}`;
   console.log(result)
   fs.readdirSync('./files').forEach((file) => {
       const filePath = path.join('./files', file);

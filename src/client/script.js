@@ -47,9 +47,10 @@ sendBiddingButton.addEventListener('click', async () => {
         }
         else {
             resetBiddingInput();
+            const result = await response.json();
             Swal.fire({
                 title: 'Success!',
-                text: 'Biddings sent successfully',
+                text: `Biddings sent successfully.\nResult: ${result.message}`,
                 icon: 'success',
                 confirmButtonText: 'Ok'
             });
