@@ -15,22 +15,38 @@ const desktopPath = path.join(os.homedir(), 'Desktop');
  * It also deletes the files from the files folder after processing them.
  */
 const processBidding = () => {
-    const encryptedFiles = fs.readdirSync('./files');
-    encryptedFiles.forEach((encryptedFile) => {
-        const encryptedFilePath = path.resolve('./files', encryptedFile); 
-        console.log(LOG_STYLES.DECRYPT_START('STARTING DECRYPTING PROCESS FOR:', encryptedFilePath));
-        try {
-            const excelData = getExcelData(encryptedFilePath, privateKey, desktopPath);
-            return console.log(LOG_STYLES.DECRYPT_END('FILE DECRYPTED WITH THIS DATA:', excelData));
-        } catch (error) {
-            return console.error(LOG_STYLES.DECRYPT_ERROR('Error decrypting file', error));
-        }
-    });
+  const encryptedFiles = fs.readdirSync('./files');
+  let precioMasBajo = Infinity;
+  let archivoPrecioMasBajo = '';
 
-    fs.readdirSync('./files').forEach((file) => {
-        const filePath = path.join('./files', file);
-        fs.unlinkSync(filePath);
+  encryptedFiles.forEach((encryptedFile) => {
+    const encryptedFilePath = path.resolve('./files', encryptedFile);
+    console.log(LOG_STYLES.DECRYPT_START('STARTING DECRYPTING PROCESS FOR:', encryptedFilePath));
+    try {
+      const excelData = getExcelData(encryptedFilePath, privateKey, desktopPath);
+      const parsedData = JSON.parse(excelData);
+      const precio = parsedData[0].precio;
+      const nombre = parsedData[0].empresa;
+
+      if (typeof precio === 'number' && precio < precioMasBajo) {
+        precioMasBajo = precio;
+        archivoPrecioMasBajo = nombre;
+      }
+
+      console.log(LOG_STYLES.DECRYPT_END('FILE DECRYPTED WITH THIS DATA:', excelData));
+    } catch (error) {
+      console.error(LOG_STYLES.DECRYPT_ERROR('Error decrypting file', error));
+    }
+  });
+
+  const result = `The winner is ${archivoPrecioMasBajo} with a bid of ${precioMasBajo}`;
+  console.log(result)
+  fs.readdirSync('./files').forEach((file) => {
+      const filePath = path.join('./files', file);
+      fs.unlinkSync(filePath);
     });
+    
+    return result;
 }
 
 export default processBidding;
