@@ -1,3 +1,5 @@
+# Online Bidding Simulator
+
 The following project was done to practice the asymmetric encryption process in node.js with the crypto module.
 
 An ssl server was also implemented with a test certificate generated with OpenSSL. 
@@ -7,3 +9,6 @@ The web application simulates a bidding process in which different excel files c
 You can try the app with the command
 
     npm run dev:1
+
+> [!NOTE]
+> School project for IT security class at URU.
